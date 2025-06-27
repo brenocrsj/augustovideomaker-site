@@ -208,7 +208,7 @@ h2 {
 }
 
 .servico-item:hover {
-    transform: translateY(-5px); /* Eleva o item levemente */
+    transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
@@ -238,7 +238,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 ou 3 colunas em telas maiores */
     gap: 40px; /* Aumenta o espaçamento entre os itens */
-    margin-top: 50px; /* Mais espaço abaixo do título da seção */
+    margin-top: 50px; /* Más espacio debajo del título de la sección */
     text-align: center;
 }
 
@@ -255,7 +255,7 @@ h2 {
 }
 
 .portfolio-item:hover {
-    transform: translateY(-8px); /* Eleva o item levemente ao passar o mouse */
+    transform: translateY(-8px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais intensa no hover */
 }
 
@@ -463,7 +463,7 @@ footer {
     align-items: center;
     text-decoration: none; /* Remove sublinhado do link */
     transition: transform 0.3s ease-in-out, background-color 0.3s ease; /* Animação suave no hover */
-    /* Se quiser o estilo da imagem com um círculo semi-transparente por trás (como a imagem que você enviou): */
+    /* Se quiser o estilo da imagem com um círculo semi-transparente por trás: */
     /* border: 2px solid rgba(255, 255, 255, 0.5); */ /* Borda semi-transparente branca */
     /* background-clip: padding-box; */ /* Garante que a borda não seja cortada */
 }
@@ -475,6 +475,51 @@ footer {
 }
 
 /* --- */
+
+/* ADAPTAÇÕES PARA MOBILE (MENU HAMBÚRGUER) */
+
+/* Esconde o botão do hambúrguer por padrão em telas grandes */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative; /* Para centralizar as barras */
+    z-index: 1001; /* Acima do menu, mas abaixo do header fixo */
+}
+
+/* Estilo das barras do hambúrguer */
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white; /* Cor das barras */
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+/* Animação do ícone de hambúrguer para X */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Esconde a lista de links em mobile por padrão */
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out; /* Transição para o menu mobile */
+}
+
 
 /* Responsividade (Media Queries) */
 
@@ -503,42 +548,61 @@ footer {
 /* Para tablets em retrato e celulares grandes */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Menu de navegação empilhado */
-    }
-
-    nav ul {
-        margin-top: 15px;
-        flex-direction: column;
+        flex-direction: row; /* Mantém logo e hambúrguer na mesma linha */
+        justify-content: space-between; /* Espaçamento entre logo e hambúrguer */
         align-items: center;
     }
 
-    nav ul li {
-        margin: 10px 0; /* Mais espaço vertical entre itens do menu */
+    /* Mostra o botão do hambúrguer em mobile */
+    .hamburger-menu {
+        display: block;
+        z-index: 1001; /* Garante que o botão esteja acima do menu quando aberto */
+        margin-right: 15px; /* Espaço do canto direito */
     }
 
-    .hero-content h1 {
-        font-size: 2.5em;
+    /* Esconde a lista de links e prepara para ser um menu de sobreposição */
+    nav .nav-links {
+        position: fixed; /* Fixa o menu sobre a tela */
+        top: 0; /* Começa do topo */
+        right: -100%; /* Inicia fora da tela, à direita */
+        width: 70%; /* Largura do menu lateral */
+        height: 100vh; /* Altura total da tela */
+        background-color: #2c3e50; /* Fundo escuro do menu (pode ser ajustado) */
+        flex-direction: column; /* Itens do menu empilhados verticalmente */
+        justify-content: flex-start; /* Alinha itens ao topo */
+        padding-top: 80px; /* Espaço para o header */
+        align-items: center; /* Centraliza itens horizontalmente */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3); /* Sombra para o menu lateral */
+        transition: right 0.3s ease-in-out; /* Animação de slide */
+        z-index: 1000; /* Acima do conteúdo, abaixo do botão hambúrguer */
     }
 
-    .hero-content p {
-        font-size: 1em;
+    /* Quando a classe 'active' é adicionada, o menu desliza para dentro */
+    nav .nav-links.active {
+        right: 0; /* Desliza para a posição visível */
     }
 
-    .servicos-grid, .portfolio-grid, .blog-grid {
-        grid-template-columns: 1fr; /* Uma coluna em telas menores */
-        gap: 30px; /* Reduz o espaçamento do grid */
+    nav .nav-links li {
+        width: 100%; /* Faz o item ocupar toda a largura do menu */
+        text-align: center;
+        margin: 0; /* Remove margens extras */
     }
 
-    .footer-content {
-        flex-direction: column;
+    nav .nav-links li a {
+        padding: 15px 0; /* Mais padding para itens clicáveis */
+        display: block; /* Ocupa toda a largura do item */
+        color: white; /* Cor do texto no menu mobile */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+        font-size: 1.1em;
     }
 
-    .social-links {
-        margin-top: 20px;
-        margin-left: 0; /* Remove margem esquerda para centralizar */
+    nav .nav-links li:last-child a {
+        border-bottom: none; /* Remove a borda do último item */
     }
-    .social-links a {
-        margin: 0 10px; /* Espaço entre os ícones sociais */
+
+    nav .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil no hover */
+        color: #007bff;
     }
 
     .section-padding {

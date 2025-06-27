@@ -13,8 +13,14 @@
     <header>
         <nav>
             <div class="logo">Augusto Videomaker</div>
-            <ul>
-                <li><a href="#home">Início</a></li>
+            
+            <button class="hamburger-menu" aria-label="Abrir menu de navegação">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links"> <li><a href="#home">Início</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#portfolio">Portfólio</a></li>
                 <li><a href="#blog">Blog</a></li>
@@ -67,17 +73,17 @@
             <h2>Nosso Portfólio</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <iframe src="https://www.youtube.com/embed/SUA_ID_DO_VIDEO_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/channel/UCAKeTj4MAHgXztgwypCYg7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h3>Título do Projeto 1</h3>
                     <p>Breve descrição do vídeo, tipo de evento, etc.</p>
                 </div>
                 <div class="portfolio-item">
-                    <iframe src="https://www.youtube.com/embed/SUA_ID_DO_VIDEO_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/yourusername.\n...\nAbra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h3>Título do Projeto 2</h3>
                     <p>Breve descrição do vídeo, tipo de evento, etc.</p>
                 </div>
                 <div class="portfolio-item">
-                    <iframe src="https://www.youtube.com/embed/SUA_ID_DO_VIDEO_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/q3lX2p_Uy9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h3>Título do Projeto 3</h3>
                     <p>Breve descrição do vídeo, tipo de evento, etc.</p>
                 </div>
@@ -144,5 +150,33 @@
        title="Fale conosco pelo WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script>
+        const hamburgerButton = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const navItems = document.querySelectorAll('.nav-links li a'); // Seleciona todos os links do menu
+
+        hamburgerButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Alterna a classe 'active' na lista de links
+            hamburgerButton.classList.toggle('active'); // Alterna a classe 'active' no botão (para animação)
+        });
+
+        // Fechar o menu ao clicar em um link (útil para navegação de uma página só)
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active'); // Remove a classe 'active' (esconde o menu)
+                hamburgerButton.classList.remove('active'); // Remove a classe 'active' do botão
+            });
+        });
+
+        // Fechar o menu ao redimensionar a tela para desktop
+        window.addEventListener('resize', () => {
+            // Usamos 768px como o breakpoint mobile, ajuste se seu CSS for diferente
+            if (window.innerWidth > 768) { 
+                navLinks.classList.remove('active');
+                hamburgerButton.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

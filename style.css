@@ -1,0 +1,595 @@
+/* style.css */
+
+/* Reset Básico e Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos Globais do Corpo e HTML */
+html {
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links de navegação */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão para o corpo */
+    line-height: 1.6;
+    color: #333; /* Cor de texto padrão */
+    background-color: #ffffff; /* Fundo branco para todo o site */
+    overflow-x: hidden; /* Evita barra de rolagem horizontal desnecessária */
+}
+
+/* Estilos para o Cabeçalho (Header) */
+header {
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o header */
+    padding: 15px 20px;
+    position: fixed; /* Fixa o header no topo */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que o header esteja acima de outros elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    color: white;
+    font-size: 1.8em;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif; /* Mantém a fonte Playfair para o logo */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 35px; /* Mais espaço entre itens do menu */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff; /* Azul ao passar o mouse */
+    border-bottom: 2px solid #007bff; /* Linha azul no hover */
+}
+
+/* --- */
+
+/* Estilos para a Seção Hero (Início) */
+.hero {
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /* Ocupa toda a altura da tela (viewport height) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Cor do texto */
+    text-align: center;
+    /* --- IMAGEM PNG DE FUNDO DA HERO --- */
+    background-image: url('../img/hero-background.png'); /* ATENÇÃO: Verifique o caminho da sua imagem */
+    background-size: cover; /* Garante que a imagem cubra toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-attachment: fixed; /* Opcional: efeito parallax no fundo */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif; /* Fonte premium para o título principal */
+    font-size: 3.5em; /* Aumenta o tamanho do título */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4); /* Sombra para o texto do título */
+}
+
+.hero-content p {
+    font-size: 1.3em; /* Aumenta o tamanho da descrição */
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Sombra para o texto da descrição */
+}
+
+/* --- */
+
+/* Estilos Gerais para Seções */
+.section-padding {
+    padding: 100px 20px; /* Aumenta o espaçamento padrão para as seções */
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o conteúdo das seções */
+}
+
+.bg-light {
+    background-color: #f8f8f8; /* Cor de fundo clara */
+}
+
+.bg-dark {
+    background-color: #2c3e50; /* Cor de fundo escura mais elegante */
+}
+
+.text-white {
+    color: white; /* Texto branco para fundos escuros */
+}
+
+h2 {
+    font-family: 'Playfair Display', serif; /* Fonte premium para todos os títulos de seção */
+    font-size: 2.8em;
+    color: #2c3e50; /* Cor escura elegante para títulos */
+    text-align: center;
+    margin-bottom: 60px; /* Mais espaço abaixo dos títulos de seção */
+}
+.bg-dark h2 {
+    color: white; /* Títulos brancos em seções escuras */
+}
+
+/* --- */
+
+/* Estilos para Botões */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 15px 30px; /* Botões um pouco maiores */
+    border-radius: 30px; /* Formato de pílula para botões */
+    text-decoration: none;
+    font-weight: 700; /* Mais negrito */
+    transition: all 0.3s ease; /* Transição para todas as propriedades */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+    font-size: 1.05em;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Azul primário */
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); /* Leve elevação no hover */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.btn-secondary:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-3px); /* Leve elevação no hover */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* --- */
+
+/* Estilos para o Grid de Serviços */
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px; /* Aumenta o espaçamento entre os itens */
+    margin-top: 40px;
+    text-align: center;
+}
+
+.servico-item {
+    background-color: white;
+    padding: 35px; /* Mais preenchimento */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Sombra mais suave e proeminente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servico-item:hover {
+    transform: translateY(-5px); /* Eleva o item levemente */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.servico-item i {
+    font-size: 3.5em; /* Ícones maiores */
+    color: #007bff;
+    margin-bottom: 25px; /* Mais espaço abaixo do ícone */
+}
+
+.servico-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em; /* Título maior */
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.servico-item p {
+    font-size: 1em;
+    color: #7f8c8d;
+    line-height: 1.7;
+}
+
+/* --- */
+
+/* Estilos para o Grid do Portfólio (Visual Premium) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 ou 3 colunas em telas maiores */
+    gap: 40px; /* Aumenta o espaçamento entre os itens */
+    margin-top: 50px; /* Mais espaço abaixo do título da seção */
+    text-align: center;
+}
+
+.portfolio-item {
+    background-color: #fff; /* Fundo branco puro */
+    padding: 25px; /* Ajusta o preenchimento */
+    border-radius: 12px; /* Cantos mais arredondados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra mais suave e proeminente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para efeito hover */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px); /* Eleva o item levemente ao passar o mouse */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais intensa no hover */
+}
+
+.portfolio-item iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Garante proporção 16:9 para vídeos */
+    border: none; /* Remove qualquer borda padrão do iframe */
+    border-radius: 8px; /* Arredonda as bordas do vídeo também */
+    margin-bottom: 20px; /* Mais espaço abaixo do vídeo */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra sutil para o vídeo */
+}
+
+.portfolio-item h3 {
+    font-family: 'Playfair Display', serif; /* Fonte mais premium para títulos */
+    font-size: 1.6em; /* Tamanho maior para o título */
+    color: #2c3e50; /* Cor escura elegante */
+    margin-top: 15px; /* Espaço acima do título */
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    font-family: 'Montserrat', sans-serif; /* Fonte legível para descrição */
+    font-size: 1em;
+    color: #7f8c8d; /* Tom de cinza suave */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    margin-bottom: 0;
+}
+
+/* --- */
+
+/* Estilos para o Grid do Blog */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.blog-post {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Alinha o texto do blog post à esquerda */
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.blog-post h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 0.95em;
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Permite que o parágrafo ocupe o espaço para alinhar botões */
+}
+
+.blog-post .read-more {
+    display: inline-block;
+    margin-top: auto; /* Empurra o botão para baixo */
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.blog-post .read-more:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* --- */
+
+/* Estilos para a Seção de Contato */
+.contact-info {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.contact-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.contact-link i {
+    margin-right: 10px;
+    color: #007bff;
+}
+.contact-link:hover {
+    color: #007bff;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #444; /* Fundo mais escuro para os campos */
+    color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #ccc;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Efeito de foco azul */
+}
+
+.contact-form button {
+    align-self: flex-start; /* Alinha o botão à esquerda do formulário */
+}
+
+/* --- */
+
+/* Estilos para o Rodapé (Footer) */
+footer {
+    background-color: #1a1a1a; /* Fundo mais escuro para o rodapé */
+    color: white;
+    padding: 40px 20px; /* Mais preenchimento */
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+    flex-grow: 1; /* Permite que o parágrafo ocupe o espaço disponível */
+    font-size: 0.9em;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.6em; /* Ícones sociais maiores */
+    margin-left: 25px; /* Mais espaço entre ícones */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #007bff;
+}
+
+/* --- */
+
+/* BOTÃO FLUTUANTE DO WHATSAPP (ESTILO DE ÍCONE) */
+.whatsapp-float-icon {
+    position: fixed; /* Fixa o botão na tela */
+    width: 60px; /* Largura do botão */
+    height: 60px; /* Altura do botão */
+    bottom: 40px; /* Distância do fundo da tela */
+    right: 40px; /* Distância da direita da tela */
+    background-color: #25d366; /* Cor verde do WhatsApp */
+    color: #FFF; /* Cor do ícone */
+    border-radius: 50%; /* Torna o botão perfeitamente redondo */
+    text-align: center;
+    font-size: 30px; /* Tamanho do ícone */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra mais suave para um visual premium */
+    z-index: 9999; /* Garante que ele fique acima de TUDO */
+    display: flex; /* Para centralizar o ícone */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Remove sublinhado do link */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease; /* Animação suave no hover */
+    /* Se quiser o estilo da imagem com um círculo semi-transparente por trás (como a imagem que você enviou): */
+    /* border: 2px solid rgba(255, 255, 255, 0.5); */ /* Borda semi-transparente branca */
+    /* background-clip: padding-box; */ /* Garante que a borda não seja cortada */
+}
+
+.whatsapp-float-icon:hover {
+    transform: scale(1.1); /* Aumenta um pouco o botão no hover */
+    background-color: #1da851; /* Escurece um pouco no hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4); /* Sombra um pouco mais forte no hover */
+}
+
+/* --- */
+
+/* Responsividade (Media Queries) */
+
+/* Para telas médias (laptops, tablets em paisagem) */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    .servico-item h3 {
+        font-size: 1.6em;
+    }
+    .portfolio-item h3 {
+        font-size: 1.4em;
+    }
+    .section-padding {
+        padding: 80px 20px;
+    }
+}
+
+/* Para tablets em retrato e celulares grandes */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Menu de navegação empilhado */
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Mais espaço vertical entre itens do menu */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .servicos-grid, .portfolio-grid, .blog-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        gap: 30px; /* Reduz o espaçamento do grid */
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .social-links {
+        margin-top: 20px;
+        margin-left: 0; /* Remove margem esquerda para centralizar */
+    }
+    .social-links a {
+        margin: 0 10px; /* Espaço entre os ícones sociais */
+    }
+
+    .section-padding {
+        padding: 60px 15px; /* Menor padding em telas pequenas */
+    }
+    h2 {
+        margin-bottom: 40px; /* Menor margem abaixo dos títulos */
+    }
+    .btn-primary, .btn-secondary {
+        padding: 12px 25px;
+        font-size: 0.95em;
+    }
+
+    /* Responsividade para o botão flutuante */
+    .whatsapp-float-icon {
+        width: 50px; /* Reduz o tamanho em telas menores */
+        height: 50px;
+        font-size: 25px;
+        bottom: 20px; /* Ajusta a posição */
+        right: 20px;
+    }
+}
+
+/* Para celulares pequenos */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.85em;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .servico-item h3 {
+        font-size: 1.4em;
+    }
+    .portfolio-item h3 {
+        font-size: 1.2em;
+    }
+    .blog-post h3 {
+        font-size: 1.2em;
+    }
+    .contact-link {
+        font-size: 1em;
+    }
+}

@@ -73,17 +73,17 @@
             <h2>Nosso Portfólio</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <iframe src="https://www.youtube.com/channel/UCAKeTj4MAHgXztgwypCYg7A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h3>Título do Projeto 1</h3>
                     <p>Breve descrição do vídeo, tipo de evento, etc.</p>
                 </div>
                 <div class="portfolio-item">
-                    <iframe src="https://www.youtube.com/yourusername.\n...\nAbra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/2JyW4yAyTl0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h3>Título do Projeto 2</h3>
                     <p>Breve descrição do vídeo, tipo de evento, etc.</p>
                 </div>
                 <div class="portfolio-item">
-                    <iframe src="https://www.youtube.com/embed/q3lX2p_Uy9I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/watch?v=c6XtRsSGaoo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h3>Título do Projeto 3</h3>
                     <p>Breve descrição do vídeo, tipo de evento, etc.</p>
                 </div>
@@ -152,6 +152,7 @@
     </a>
 
     <script>
+        // === JavaScript para o Menu Hambúrguer ===
         const hamburgerButton = document.querySelector('.hamburger-menu');
         const navLinks = document.querySelector('.nav-links');
         const navItems = document.querySelectorAll('.nav-links li a'); // Seleciona todos os links do menu
@@ -159,6 +160,7 @@
         hamburgerButton.addEventListener('click', () => {
             navLinks.classList.toggle('active'); // Alterna a classe 'active' na lista de links
             hamburgerButton.classList.toggle('active'); // Alterna a classe 'active' no botão (para animação)
+            document.body.classList.toggle('no-scroll'); // Adiciona/remove classe para bloquear scroll do body
         });
 
         // Fechar o menu ao clicar em um link (útil para navegação de uma página só)
@@ -166,6 +168,7 @@
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active'); // Remove a classe 'active' (esconde o menu)
                 hamburgerButton.classList.remove('active'); // Remove a classe 'active' do botão
+                document.body.classList.remove('no-scroll'); // Remove classe ao clicar no item
             });
         });
 
@@ -175,8 +178,41 @@
             if (window.innerWidth > 768) { 
                 navLinks.classList.remove('active');
                 hamburgerButton.classList.remove('active');
+                document.body.classList.remove('no-scroll'); // Remove classe ao redimensionar
             }
         });
+
+        // === NOVO JavaScript para Animações ao Rolar (Intersection Observer) ===
+        // Seleciona todos os elementos que devem ser animados ao rolar
+        // NOTA: '.section-padding' já está incluído e serve como gatilho principal
+        const animatedElements = document.querySelectorAll('.servico-item, .portfolio-item, .blog-post, footer, .whatsapp-float-icon');
+
+        // Cria um Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Se o elemento estiver visível, adiciona a classe 'animate-on-scroll'
+                    entry.target.classList.add('animate-on-scroll');
+                    // Opcional: Para que a animação ocorra apenas uma vez, descomente a linha abaixo
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1, // A animação dispara quando 10% do elemento está visível
+            rootMargin: '0px 0px -50px 0px' // Começa a observar um pouco antes de entrar na tela
+        });
+
+        // Observa cada elemento animado
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Animação inicial para a seção hero (para aparecer no carregamento)
+        const heroSection = document.getElementById('home');
+        if (heroSection) {
+            heroSection.classList.add('animate-on-load'); // Classe para animação no carregamento
+        }
+
     </script>
 </body>
 </html>
